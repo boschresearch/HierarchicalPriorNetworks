@@ -1,0 +1,43 @@
+# missing fields are taken from configs/default.yaml
+method: onet_sdf
+data:
+  dataset: Shapes3D
+  path: data/
+  classes: ['demo'] # ['shapenet_full']
+  train_split: train_genre
+  val_split: val_genre
+  test_split: test_demo # test_val_genre
+  input_type: depth
+  img_folder: '' #im_depth_ortho2
+  img_size: 256
+  img_augment: false
+  points_subsample: 2048 
+  voxels_file: null
+model:
+  encoder_latent: null
+  decoder: cbatchnorm
+  encoder: resnet18
+  encoder_kwargs: {"input_channels":1 , "normalize":False, "pretrained":False}
+  c_dim: 256
+  z_dim: 0
+training:
+  out_dir: out/00_paper_genre/bl_sdf
+  batch_size: 64
+  model_selection_metric: iou
+  model_selection_mode: maximize
+  visualize_every: 20000
+  checkpoint_every: 10000
+  validate_every: 10000
+test:
+  threshold: -0.02 # threshold for sdf
+  eval_mesh: true
+  eval_pointcloud: false
+generation:
+  batch_size: 100000
+  refine: false
+  n_x: 128
+  n_z: 1
+  resolution_0: 128
+  upsampling_steps: 0
+  generate_mesh: true
+  generate_pointcloud: false

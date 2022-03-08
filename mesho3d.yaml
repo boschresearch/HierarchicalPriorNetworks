@@ -1,0 +1,29 @@
+name: mesho3d
+channels:
+  - pytorch
+  - open3d-admin
+  - conda-forge
+  - defaults
+dependencies:
+  - imageio
+  - matplotlib
+  - numpy
+  - open3d=0.8.0
+  - pandas
+  - pillow
+  - python
+  - cython
+  - pytorch=1.3.1
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - tensorboard
+  - tensorboardx
+  - torchvision=0.4.2
+  - tqdm
+  - trimesh
+  - pip
+  - pip:
+    - gputil
+    - h5py
+    - plyfile

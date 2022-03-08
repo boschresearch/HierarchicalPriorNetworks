@@ -1,0 +1,48 @@
+# missing fields are taken from configs/default.yaml
+method: onet
+data:
+  dataset: Parts3D
+  path: data/
+  classes: ['compositional_shapes']
+  train_split: this_must_not_be_used_for_training
+  val_split: this_must_not_be_used_for_training
+  test_split: test_compositional
+  input_type: depth
+  img_folder: im_depth_ortho2
+  img_size: 256
+  parts_size: 32
+  parts_stride: 16
+  img_augment: false
+  points_subsample: 1500
+  voxels_file: null
+model:
+  encoder_latent: null
+  decoder: cbatchnorm
+  encoder: resnet18
+  encoder_kwargs: {"input_channels":1, "normalize":False}
+  c_dim: 256
+  z_dim: 0
+training:
+  out_dir:  out/00_paper_genre/p32s16
+  batch_size: 64
+  batch_size_val: 64
+  batch_size_vis: 32
+  model_selection_metric: iou
+  model_selection_mode: maximize
+  checkpoint_every: 20000
+  visualize_every: 50000
+  validate_every: 20000
+test:
+  threshold: 0.2
+  eval_mesh: true
+  eval_pointcloud: false
+generation:
+  batch_size: 100000
+  refine: false
+  n_x: 128
+  n_z: 1
+  resolution_0: 16
+  upsampling_steps: 0
+  generate_mesh: true
+  generate_pointcloud: false
+  generation_dir: generation_hierarchical3
