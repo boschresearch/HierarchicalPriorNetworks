@@ -61,7 +61,7 @@ See more options running `python render_depth.py --help`
 
 Rough outline:
 - render depth from shapenet shapes in different poses
-- poses are sampled from azimuth and elevation
+- we provide the poses, train- and test splits [here](data/poses/)
 - apply the same poses to watertight meshes (see [David Stutz](https://github.com/davidstutz/mesh-fusion))
 - sample points from the surface for evaluation
 - sample points from the volume (unit cube) and extract occupied / free labels
